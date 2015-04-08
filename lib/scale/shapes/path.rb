@@ -4,23 +4,33 @@ module Scale
     attribute :d, String
 
     def move_to(x:, y:)
-      self.d="M#{x} #{y}"
+      command("M#{x} #{y}")
     end
 
     def line_to(x:, y:)
-      self.d = "#{self.d} L #{x} #{y}"
+      command("L #{x} #{y}")
     end
 
     def horizontal(n)
-      self.d = "#{self.d} H #{n}"
+      command("H #{n}")
     end
 
     def vertical(n)
-      self.d = "#{self.d} V #{n}"
+      command("V #{n}")
     end
 
     def xml_tag
       :path
+    end
+
+    private
+
+    def command(instructions)
+      if self.d.nil?
+        self.d = instructions
+      else
+        self.d = "#{self.d} #{instructions}"
+      end
     end
   end
 end

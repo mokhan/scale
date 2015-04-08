@@ -45,4 +45,21 @@ describe Scale::Path do
       expect(subject.to_xml).to eql(expected)
     end
   end
+
+  describe "drawing a rectangle" do
+    it 'draws the proper rectangle' do
+      subject.move_to(x: 10, y: 10)
+      subject.horizontal(90)
+      subject.vertical(90)
+      subject.horizontal(10)
+      subject.line_to(x: 10, y: 10)
+      
+      expected = <<-XML
+<?xml version="1.0"?>
+<path d="M10 10 H 90 V 90 H 10 L 10 10"/>
+      XML
+      expect(subject.to_xml).to eql(expected)
+    end
+  end
+
 end
