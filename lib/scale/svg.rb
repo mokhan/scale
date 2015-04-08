@@ -2,33 +2,18 @@ require 'nokogiri'
 
 module Scale
   class SVG
+    include Node
     attr_accessor :width, :height
 
     def initialize(width: nil, height: nil)
       @width, @height = width, height
-      @children = []
-    end
-
-    def add(node)
-      @children.push(node)
-    end
-
-    def to_xml
-      builder = Nokogiri::XML::Builder.new do |xml|
-        append_to(xml)
-      end
-      builder.to_xml
-    end
-
-    def append_to(xml)
-      xml.svg(attributes) do
-        @children.each do |node|
-          node.append_to(xml)
-        end
-      end
     end
 
     private
+
+    def xml_tag
+      :svg
+    end
 
     def attributes
       attributes = {
