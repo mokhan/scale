@@ -46,6 +46,19 @@ describe Scale::Path do
     end
   end
 
+  describe "#close_path" do
+    it 'navigates back to the start' do
+      subject.move_to(x: 10, y: 10)
+      subject.horizontal(10)
+      subject.close_path
+      expected = <<-XML
+<?xml version="1.0"?>
+<path d="M10 10 H 10 Z"/>
+      XML
+      expect(subject.to_xml).to eql(expected)
+    end
+  end
+
   describe "drawing a rectangle" do
     it 'draws the proper rectangle' do
       subject.move_to(x: 10, y: 10)

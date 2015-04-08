@@ -19,6 +19,10 @@ module Scale
       command("V #{n}")
     end
 
+    def close_path
+      command("Z")
+    end
+
     def xml_tag
       :path
     end
