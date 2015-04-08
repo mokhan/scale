@@ -7,7 +7,7 @@ module Scale
     attribute :y2, Integer # the y position of point 2
 
     def xml_tag
-      :circle
+      :line
     end
   end
 end
