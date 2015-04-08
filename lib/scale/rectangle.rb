@@ -1,20 +1,23 @@
+require 'virtus'
+
 module Scale
   class Rectangle
     include Node
-    attr_accessor :height, :width, :fill, :x, :y, :rx, :ry
-
-    def initialize(width: nil, height: nil, fill: nil)
-      @width = width
-      @height = height
-      @fill = fill
-    end
+    include Virtus.model
+    attribute :width, String
+    attribute :height, String
+    attribute :fill, String
+    attribute :x, Integer
+    attribute :y, Integer
+    attribute :rx, Integer
+    attribute :ry, Integer
 
     def xml_tag
       :rect
     end
 
     def attributes
-      { width: width, height: height, fill: fill, x: x, y: y, rx: rx, ry: ry }.delete_if { |key, value| value.nil? }
+      super.delete_if { |key, value| value.nil? }
     end
   end
 end
