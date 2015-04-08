@@ -4,6 +4,7 @@ module Scale
   module Node
     include Enumerable
     include Virtus.module
+    attr_reader :content
 
     def children
       @children ||= []
@@ -26,10 +27,18 @@ module Scale
       builder.to_xml
     end
 
-    def append_to(xml)
-      xml.send(xml_tag.to_sym, xml_attributes) do
-        each do |node|
-          node.append_to(xml)
+    def append_to(builder)
+      if content.nil?
+        builder.send(xml_tag.to_sym, xml_attributes) do
+          each do |node|
+            node.append_to(builder)
+          end
+        end
+      else
+        builder.send(xml_tag.to_sym, content, xml_attributes) do
+          each do |node|
+            node.append_to(builder)
+          end
         end
       end
     end
