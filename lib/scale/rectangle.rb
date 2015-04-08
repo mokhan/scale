@@ -1,6 +1,7 @@
 module Scale
   class Rectangle
     include Node
+    attr_accessor :height, :width, :fill, :x, :y, :rx, :ry
 
     def initialize(width: nil, height: nil, fill: nil)
       @width = width
@@ -13,7 +14,7 @@ module Scale
     end
 
     def attributes
-      { width: @width, height: @height, fill: @fill }
+      { width: width, height: height, fill: fill, x: x, y: y, rx: rx, ry: ry }
     end
   end
 end
