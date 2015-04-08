@@ -4,6 +4,7 @@ require "scale/svg"
 require "scale/shapes/rectangle"
 require "scale/shapes/circle"
 require "scale/shapes/ellipse"
+require "scale/shapes/line"
 require "scale/text"
 require "scale/dsl"
 
