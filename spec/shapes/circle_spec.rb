@@ -16,9 +16,5 @@ describe Scale::Circle do
       subject.cy = 10
       expect(subject.attributes).to include(cy: 10)
     end
-
-    it "skips attributes that are not specified" do
-      expect(subject.attributes).to be_empty
-    end
   end
 end

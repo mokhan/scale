@@ -1,12 +1,13 @@
 module Scale
-  class Circle
+  class Ellipse
     include Node
+    attribute :rx, Integer
+    attribute :ry, Integer
     attribute :cx, Integer
     attribute :cy, Integer
-    attribute :r, Integer
 
     def xml_tag
-      :circle
+      :ellipse
     end
   end
 end

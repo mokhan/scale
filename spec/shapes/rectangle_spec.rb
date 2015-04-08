@@ -31,9 +31,5 @@ describe Scale::Rectangle do
       subject.ry = 10
       expect(subject.attributes).to include(ry: 10)
     end
-
-    it "skips attributes that are not specified" do
-      expect(subject.attributes).to be_empty
-    end
   end
 end
