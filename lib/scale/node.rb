@@ -2,6 +2,7 @@ require 'virtus'
 
 module Scale
   module Node
+    include Enumerable
     include Virtus.module
 
     def children
@@ -10,6 +11,12 @@ module Scale
 
     def add(node)
       children.push(node)
+    end
+
+    def each
+      children.each do |child|
+        yield child
+      end
     end
 
     def to_xml
@@ -21,7 +28,7 @@ module Scale
 
     def append_to(xml)
       xml.send(xml_tag.to_sym, xml_attributes) do
-        children.each do |node|
+        each do |node|
           node.append_to(xml)
         end
       end

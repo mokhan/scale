@@ -12,4 +12,12 @@ describe Scale::Node do
       expect(subject.xml_attributes).to be_empty
     end
   end
+
+  describe "#add" do
+    it 'adds a child node' do
+      child = Object.new
+      subject.add(child)
+      expect(subject).to include(child)
+    end
+  end
 end
