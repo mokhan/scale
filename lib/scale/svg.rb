@@ -15,13 +15,17 @@ module Scale
 
     def to_xml
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.svg(attributes) do
-          @children.each do |node|
-            node.append_to(xml)
-          end
-        end
+        append_to(xml)
       end
       builder.to_xml
+    end
+
+    def append_to(xml)
+      xml.svg(attributes) do
+        @children.each do |node|
+          node.append_to(xml)
+        end
+      end
     end
 
     private
