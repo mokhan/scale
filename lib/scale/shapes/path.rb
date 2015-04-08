@@ -11,12 +11,12 @@ module Scale
       command("L #{x} #{y}")
     end
 
-    def horizontal(n)
-      command("H #{n}")
+    def horizontal(n, relative: false)
+      command("#{relative ? "h" : "H"} #{n}")
     end
 
-    def vertical(n)
-      command("V #{n}")
+    def vertical(n, relative: false)
+      command("#{relative ? "v" : "V"} #{n}")
     end
 
     def close_path

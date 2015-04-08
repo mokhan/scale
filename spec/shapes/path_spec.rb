@@ -32,15 +32,37 @@ describe Scale::Path do
       XML
       expect(subject.to_xml).to eql(expected)
     end
+
+    it 'moves horizontally using relative position' do
+      subject.move_to(x: 10, y: 10)
+      subject.horizontal(90, relative: true)
+      expected = <<-XML
+<?xml version="1.0"?>
+<path d="M10 10 h 90"/>
+      XML
+      expect(subject.to_xml).to eql(expected)
+    end
   end
 
   describe "#vertial" do
-    it 'draws a horizontal line' do
+    before :each do
       subject.move_to(x: 10, y: 10)
+    end
+
+    it 'draws a vertical line' do
       subject.vertical(90)
       expected = <<-XML
 <?xml version="1.0"?>
 <path d="M10 10 V 90"/>
+      XML
+      expect(subject.to_xml).to eql(expected)
+    end
+
+    it 'draws a vertical line relative to the current position' do
+      subject.vertical(90, relative: true)
+      expected = <<-XML
+<?xml version="1.0"?>
+<path d="M10 10 v 90"/>
       XML
       expect(subject.to_xml).to eql(expected)
     end
@@ -74,5 +96,4 @@ describe Scale::Path do
       expect(subject.to_xml).to eql(expected)
     end
   end
-
 end
