@@ -5,6 +5,7 @@ require "scale/shapes/rectangle"
 require "scale/shapes/circle"
 require "scale/shapes/ellipse"
 require "scale/text"
+require "scale/dsl"
 
 module Scale
   # Your code goes here... NOT!
