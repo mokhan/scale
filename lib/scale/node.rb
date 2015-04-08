@@ -28,23 +28,22 @@ module Scale
     end
 
     def append_to(builder)
-      if content.nil?
-        builder.send(xml_tag.to_sym, xml_attributes) do
-          each do |node|
-            node.append_to(builder)
-          end
-        end
-      else
-        builder.send(xml_tag.to_sym, content, xml_attributes) do
-          each do |node|
-            node.append_to(builder)
-          end
+      builder.send(xml_tag.to_sym, *xml_parameters) do
+        each do |node|
+          node.append_to(builder)
         end
       end
     end
 
     def xml_attributes
       attributes.delete_if { |key, value| value.nil? }
+    end
+
+    private
+
+    def xml_parameters
+      return [xml_attributes] if content.nil?
+      [content, xml_attributes]
     end
   end
 end
