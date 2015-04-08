@@ -5,6 +5,7 @@ module Scale
     include Enumerable
     include Virtus.module
     attr_reader :content
+    attribute :style, String
 
     def children
       @children ||= []

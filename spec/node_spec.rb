@@ -3,7 +3,7 @@ describe Scale::Node do
     include Scale::Node
     attribute :x, Integer
     attribute :y, Integer
-    attribute :fill_opacity, Float
+    attribute :font_size_adjust, Float
 
     def xml_tag
       :fake
@@ -45,10 +45,10 @@ describe Scale::Node do
     end
 
     it 'replaces underscores in attribute names' do
-      subject.fill_opacity = 0.5
+      subject.font_size_adjust = 0.5
       expected = <<-XML
 <?xml version="1.0"?>
-<fake fill-opacity="0.5"/>
+<fake font-size-adjust="0.5"/>
       XML
       expect(subject.to_xml).to eql(expected)
     end
