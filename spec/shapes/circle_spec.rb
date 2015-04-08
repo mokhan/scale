@@ -1,4 +1,3 @@
-
 describe Scale::Circle do
   it { expect(subject.xml_tag).to eql(:circle) }
 

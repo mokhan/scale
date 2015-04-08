@@ -1,8 +1,8 @@
 require "scale/version"
 require "scale/node"
 require "scale/svg"
-require "scale/rectangle"
-require "scale/circle"
+require "scale/shapes/rectangle"
+require "scale/shapes/circle"
 
 module Scale
   # Your code goes here... NOT!
