@@ -14,7 +14,7 @@ module Scale
     end
 
     def attributes
-      { width: width, height: height, fill: fill, x: x, y: y, rx: rx, ry: ry }
+      { width: width, height: height, fill: fill, x: x, y: y, rx: rx, ry: ry }.delete_if { |key, value| value.nil? }
     end
   end
 end
