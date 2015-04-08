@@ -23,8 +23,11 @@ describe Scale::Path do
   end
 
   describe "#horizontal" do
-    it 'draws a horizontal line' do
+    before :each do
       subject.move_to(x: 10, y: 10)
+    end
+
+    it 'draws a horizontal line' do
       subject.horizontal(90)
       expected = <<-XML
 <?xml version="1.0"?>
@@ -34,7 +37,6 @@ describe Scale::Path do
     end
 
     it 'moves horizontally using relative position' do
-      subject.move_to(x: 10, y: 10)
       subject.horizontal(90, relative: true)
       expected = <<-XML
 <?xml version="1.0"?>
@@ -44,7 +46,7 @@ describe Scale::Path do
     end
   end
 
-  describe "#vertial" do
+  describe "#vertical" do
     before :each do
       subject.move_to(x: 10, y: 10)
     end
@@ -88,7 +90,7 @@ describe Scale::Path do
       subject.vertical(90)
       subject.horizontal(10)
       subject.line_to(x: 10, y: 10)
-      
+
       expected = <<-XML
 <?xml version="1.0"?>
 <path d="M10 10 H 90 V 90 H 10 L 10 10"/>

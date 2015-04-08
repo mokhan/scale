@@ -36,7 +36,11 @@ module Scale
     end
 
     def xml_attributes
-      attributes.delete_if { |key, value| value.nil? }
+      attributes.inject({}) do |memo, (key, value)|
+        new_key = key.to_s.gsub(/\_/, "-").to_sym
+        memo[new_key] = value unless value.nil?
+        memo
+      end
     end
 
     private

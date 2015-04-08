@@ -4,6 +4,9 @@ module Scale
     attribute :width, String
     attribute :height, String
     attribute :fill, String
+    attribute :fill_opactiy, String
+    attribute :stroke, String
+    attribute :stroke_opacity, String
     attribute :x, Integer
     attribute :y, Integer
     attribute :rx, Integer
