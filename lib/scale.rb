@@ -10,6 +10,7 @@ require "scale/shapes/polyline"
 require "scale/shapes/rectangle"
 require "scale/text"
 require "scale/dsl"
+require "scale/railtie" if defined?(Rails)
 
 module Scale
   # Your code goes here... NOT!
